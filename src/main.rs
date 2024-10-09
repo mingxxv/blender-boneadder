@@ -1,6 +1,6 @@
 use std::io::{self, Write};
-use clipboard::{ClipboardContext, ClipboardProvider};
-use crossterm::{execute, terminal, event, Event, KeyCode};
+use arboard::Clipboard;
+use crossterm::{terminal, event::{self, Event, KeyCode}};
 
 fn main() {
     // Ask for parent bone name
@@ -88,10 +88,10 @@ add_bone_to_armature(armature_name, parent_bone_name, new_bone_name)
 "#)
 }
 
-// Function to copy the script to the clipboard
+// Function to copy the script to the clipboard using arboard
 fn copy_to_clipboard(script: &str) -> Result<(), Box<dyn std::error::Error>> {
-    let mut ctx: ClipboardContext = ClipboardProvider::new()?;
-    ctx.set_contents(script.to_string())?;
+    let mut clipboard = Clipboard::new()?;
+    clipboard.set_text(script.to_string())?;
     Ok(())
 }
 

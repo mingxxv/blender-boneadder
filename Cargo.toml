@@ -1,8 +1,8 @@
 [package]
-name = "blender-boneadder2"
+name = "blender-boneadder"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clipboard = "0.5"
-crossterm = "0.26"
+arboard = "2.1"
+crossterm = "0.28"
